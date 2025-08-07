@@ -10,7 +10,7 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:3000/login', { email, password })
+    axios.post('http://localhost:8081/login', { email, password })
     .then(res => console.log(res))
     .catch(err =>console.log(err));
   }

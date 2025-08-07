@@ -27,22 +27,29 @@ app.post('/login', (req, res) => {
     })
 })
 
+
+
+
+
 app.post('/signup', (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
-  const sql = "INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
+  const sql = "INSERT INTO signup (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
   const values = [firstname, lastname, email, password];
 
-  db.query(sql, values, (err, result) => {
-    if (err) {
-      return res.json("Error inserting data" );
-    } else {
-      return res.json("User successfully registered");
+  db.query(sql, values, 
+    (err, result) => {
+    if (result) {
+      res.send(result);
     }
+    else{
+      return res.json("Error inserting data" );
+    } 
+    
   });
 });
 
 
-app.listen(3000, () => {
+app.listen(8081, () => {
     console.log("Listening...");
 });

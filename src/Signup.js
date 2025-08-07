@@ -12,7 +12,7 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:3000/signup', { firstname,lastname,email, password })
+    axios.post('http://localhost:8081/signup', { firstname,lastname,email, password })
     .then(res => console.log(res))
     .catch(err =>console.log(err));
   }
